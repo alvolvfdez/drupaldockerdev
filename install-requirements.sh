@@ -38,10 +38,11 @@ else
     fi
   fi
 fi
+
 command -v lando >/dev/null 2>&1
 if [ $? -eq 1 ]; then
   LANDO_VERSION="v3.0.0-rc.23"
-  if [ ! test -f "lando-"$LANDO_VERSION".deb" ]; then
+  if [ ! -f "lando-"$LANDO_VERSION".deb" ]; then
     wget "https://github.com/lando/lando/releases/download/"$LANDO_VERSION"/lando-"$LANDO_VERSION".deb"
   fi
   sudo dpkg -i "lando-"$LANDO_VERSION".deb";
