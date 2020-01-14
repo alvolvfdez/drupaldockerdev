@@ -40,11 +40,11 @@ else
     fi
   fi
 fi
-
 which lando >/dev/null 2>&1
 if [ $? -eq 1 ]; then
-  LANDO_VERSION="v3.0.0-rc.23"
-  if [ ! -f "lando-"$LANDO_VERSION".deb" ]; then
+  LANDO_VERSION="v3.0.0-rc.23";
+  ls "lando-"$LANDO_VERSION".deb" >/dev/null 2>&1;
+  if [ $? -eq 2 ]; then
     echo "Descargando lando..."
     wget "https://github.com/lando/lando/releases/download/"$LANDO_VERSION"/lando-"$LANDO_VERSION".deb"
   fi
