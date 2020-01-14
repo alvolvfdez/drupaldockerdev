@@ -11,13 +11,15 @@ fi
 MIN_DOCKER_VERSION="19.00"
 DOCKER_INSTALLED="false"
 #Comprobamos si no tenemos curl instalado, de ser así, se instalará.
-command -v curl >/dev/null 2>&1
+which curl >/dev/null 2>&1
 if [ $? -eq 1 ]; then
+  echo "Instalando curl..."
   sudo apt-get install -y curl
 fi
 # Comprobamos si tenemos docker instalado, de no ser así, se instalará.
-command -v docker >/dev/null 2>&1
+which docker >/dev/null 2>&1
 if [ $? -eq 1 ]; then
+  echo "Instalando docker..."
   curl -sSL https://get.docker.com/ | sudo sh
   sudo usermod -aG docker $USER
   DOCKER_INSTALLED="true"
@@ -39,18 +41,20 @@ else
   fi
 fi
 
-command -v lando >/dev/null 2>&1
+which lando >/dev/null 2>&1
 if [ $? -eq 1 ]; then
   LANDO_VERSION="v3.0.0-rc.23"
   if [ ! -f "lando-"$LANDO_VERSION".deb" ]; then
+    echo "Descargando lando..."
     wget "https://github.com/lando/lando/releases/download/"$LANDO_VERSION"/lando-"$LANDO_VERSION".deb"
   fi
+  echo "Instalando git..."
   sudo dpkg -i "lando-"$LANDO_VERSION".deb";
 else
   echo "lando está instalado correctamente."
 fi
 if [ $DOCKER_INSTALLED == "true" ]; then
   echo "[!] Por favor, reinicia tu computadora.";
-else
-  sh init-oneclickdrupal.sh
+# else
+  # sh init-oneclickdrupal.sh
 fi
