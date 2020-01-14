@@ -8,7 +8,7 @@ else
   sudo apt-get install -y git
 fi
 # Definimos la versión mínimas de docker.
-MIN_DOCKER_VERSION="19.00"
+MIN_DOCKER_VERSION="17.06"
 DOCKER_INSTALLED="false"
 #Comprobamos si no tenemos curl instalado, de ser así, se instalará.
 which curl >/dev/null 2>&1
