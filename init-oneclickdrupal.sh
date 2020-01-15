@@ -33,4 +33,6 @@ lando drush si standard --db-url=mysql://drupal8:drupal8@database/drupal8 --loca
 lando drush si standard --db-url=mysql://drupal8:drupal8@database/drupal8 --locale=es --account-pass=admin --site-name=OneClickDrupal -y ||
 lando drush si standard --db-url=mysql://drupal8:drupal8@database/drupal8 --locale=es --account-pass=admin --site-name=OneClickDrupal -y ||
 echo "La instalación de drupal no se ha realizado correctamente. Por favor, contacte con los desarrolladores.";
+sh fix-drupal8-permissions.sh;
+lando composer install;
 # xdg-open https://oneclickdrupal.lndo.site;
