@@ -9,7 +9,7 @@ else
 fi
 # Definimos la versión mínimas de docker.
 MIN_DOCKER_VERSION="17.06"
-DOCKER_INSTALLED="false"
+FIRST_DOCKER_INSTALLATION=false
 #Comprobamos si no tenemos curl instalado, de ser así, se instalará.
 which curl >/dev/null 2>&1
 if [ $? -eq 1 ]; then
@@ -22,7 +22,7 @@ if [ $? -eq 1 ]; then
   echo "Instalando docker..."
   curl -sSL https://get.docker.com/ | sudo sh
   sudo usermod -aG docker $USER
-  DOCKER_INSTALLED="true"
+  FIRST_DOCKER_INSTALLATION=true
 else
   # Comprobamos la versión de docker instalada.
   DOCKER_VERSION=$(docker --version)
@@ -53,8 +53,9 @@ if [ $? -eq 1 ]; then
 else
   echo "lando está instalado correctamente."
 fi
-if [ $DOCKER_INSTALLED == "true" ]; then
-  echo "[!] Por favor, reinicia tu computadora.";
-# else
-  # sh init-oneclickdrupal.sh
+if [ $FIRST_DOCKER_INSTALLATION = true ]; then
+  echo "[!] Por favor, reinicia tu sesión de escrotorio. Luego podrá ejecutar el instalador del entorno (init-oneclickdrupal.sh)";
+else
+  echo "Instalando el entorno..."
+  ./init-oneclickdrupal.sh
 fi
