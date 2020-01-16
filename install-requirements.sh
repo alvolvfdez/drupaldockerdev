@@ -54,8 +54,6 @@ else
   echo "lando está instalado correctamente."
 fi
 if [ $FIRST_DOCKER_INSTALLATION = true ]; then
-  echo "[!] Por favor, reinicia tu sesión de escrotorio. Luego podrá ejecutar el instalador del entorno (init-oneclickdrupal.sh)";
-else
-  echo "Instalando el entorno..."
-  ./init-oneclickdrupal.sh
+  echo "[!] Por favor, reinicia tu sesión de escrotorio. Luego podrá ejecutar de nuevo el setup.sh";
+  exit 1;
 fi

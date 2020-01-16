@@ -1,0 +1,5 @@
+name: oneclickdrupal
+recipe: drupal8
+config:
+  xdebug: true
+  webroot: .
